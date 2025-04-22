@@ -1,0 +1,112 @@
+---
+import Button from './Button.astro';
+---
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-content">
+      <div class="about-text">
+        <h2>From FIFO to Full Power.</h2>
+        <p>
+          After a decade working FIFO and feeling like his health, energy, and confidence were slipping, 
+          Jaxon decided to flip the script. He got serious about strength training, nutrition, and routine — 
+          and in the process, rebuilt not just his body, but his mindset.
+        </p>
+        <p>
+          Now he coaches other men to do the same — no fluff, no fads, just real structure that works.
+        </p>
+        <Button 
+          text="Let's Get You Moving" 
+          href="#contact" 
+          variant="primary"
+        />
+      </div>
+      <div class="about-image">
+        <img src="/images/jaxon-hero.jpg" alt="Jaxon Reid - Performance Coach" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background-color: var(--dark-navy);
+  }
+  
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .about-text {
+    padding-right: 2rem;
+  }
+  
+  .about-text h2 {
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .about-text h2:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background-color: var(--accent-red);
+  }
+  
+  .about-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .about-image {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .about-image:before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: -20px;
+    bottom: -20px;
+    border: 2px solid var(--accent-blue);
+    z-index: -1;
+    border-radius: 8px;
+  }
+  
+  .about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 992px) {
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .about-text {
+      padding-right: 0;
+      order: 2;
+    }
+    
+    .about-image {
+      order: 1;
+    }
+    
+    .about-image:before {
+      display: none;
+    }
+  }
+</style>

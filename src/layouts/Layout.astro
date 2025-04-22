@@ -1,0 +1,143 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Built for More - Online Performance Coaching for busy men who want to stop starting over, train with purpose, and build a body (and life) they're proud of." />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--navy: #0A1128;
+		--dark-navy: #05081A;
+		--accent-blue: #1282A2;
+		--accent-red: #E63946;
+		--light-gray: #F8F9FA;
+		--medium-gray: #6C757D;
+	}
+	
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	
+	html {
+		font-family: 'Inter', sans-serif;
+		background-color: var(--navy);
+		color: white;
+		scroll-behavior: smooth;
+	}
+	
+	body {
+		line-height: 1.6;
+	}
+	
+	h1, h2, h3, h4, h5 {
+		font-family: 'Anton', sans-serif;
+		line-height: 1.2;
+		letter-spacing: 0.5px;
+	}
+	
+	h1 {
+		font-size: clamp(2.5rem, 5vw, 4rem);
+	}
+	
+	h2 {
+		font-size: clamp(2rem, 4vw, 3rem);
+	}
+	
+	h3 {
+		font-size: clamp(1.5rem, 3vw, 2.25rem);
+	}
+	
+	p {
+		margin-bottom: 1rem;
+	}
+	
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+	
+	.container {
+		width: 90%;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+	
+	section {
+		padding: 5rem 0;
+	}
+	
+	.btn {
+		display: inline-block;
+		padding: 0.8rem 1.8rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 4px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		text-align: center;
+	}
+	
+	.btn-primary {
+		background-color: var(--accent-red);
+		color: white;
+		border: 2px solid var(--accent-red);
+	}
+	
+	.btn-primary:hover {
+		background-color: transparent;
+		color: var(--accent-red);
+	}
+	
+	.btn-secondary {
+		background-color: transparent;
+		color: white;
+		border: 2px solid white;
+	}
+	
+	.btn-secondary:hover {
+		background-color: white;
+		color: var(--navy);
+	}
+	
+	.text-center {
+		text-align: center;
+	}
+	
+	.section-title {
+		margin-bottom: 2rem;
+	}
+	
+	.section-subtitle {
+		color: var(--accent-blue);
+		font-weight: 500;
+		margin-bottom: 0.5rem;
+	}
+	
+	@media (max-width: 768px) {
+		section {
+			padding: 3rem 0;
+		}
+	}
+</style>

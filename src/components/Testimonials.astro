@@ -1,0 +1,141 @@
+---
+const testimonials = [
+  {
+    quote: "I dropped 10kg, fixed my sleep, and feel like I've got control again.",
+    name: "Luke, 36",
+    job: "Electrician",
+    image: "/images/jaxon-hero.jpg" // Placeholder
+  },
+  {
+    quote: "The training is simple, the support is real, and the routine fits my schedule.",
+    name: "Andy, 41",
+    job: "FIFO Welder",
+    image: "/images/jaxon-hero.jpg" // Placeholder
+  },
+  {
+    quote: "Jaxon gets it. I've never felt more in control of my health.",
+    name: "Matt, 29",
+    job: "Business Owner",
+    image: "/images/jaxon-hero.jpg" // Placeholder
+  }
+];
+---
+
+<section class="testimonials" id="clients">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>Men Just Like You Are Crushing It</h2>
+    </div>
+    
+    <div class="testimonials-grid">
+      {testimonials.map(testimonial => (
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">"</div>
+            <p class="testimonial-quote">{testimonial.quote}</p>
+            <div class="testimonial-author">
+              <div class="author-image">
+                <img src={testimonial.image} alt={testimonial.name} />
+              </div>
+              <div class="author-info">
+                <h4>{testimonial.name}</h4>
+                <p>{testimonial.job}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="testimonials-cta text-center">
+      <a href="#contact" class="btn btn-primary">Book Your Free Strategy Call</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    background-color: var(--dark-navy);
+  }
+  
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+  
+  .testimonial-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .testimonial-content {
+    padding: 2rem;
+    position: relative;
+  }
+  
+  .quote-icon {
+    font-size: 4rem;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    opacity: 0.1;
+    font-family: Georgia, serif;
+  }
+  
+  .testimonial-quote {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+  }
+  
+  .author-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 1rem;
+  }
+  
+  .author-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .author-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
+  
+  .author-info p {
+    font-size: 0.9rem;
+    color: var(--medium-gray);
+    margin: 0;
+  }
+  
+  .testimonials-cta {
+    margin-top: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

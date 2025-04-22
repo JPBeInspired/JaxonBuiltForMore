@@ -1,0 +1,144 @@
+---
+const faqs = [
+  {
+    question: "Do I need a gym membership?",
+    answer: "Nope. Programs are built around your equipment — home or gym."
+  },
+  {
+    question: "What if I work night shift/FIFO?",
+    answer: "Been there. The system is built to flex with your schedule."
+  },
+  {
+    question: "I've failed programs before — how's this different?",
+    answer: "Built for More isn't just workouts. It's the support, structure, and accountability you've been missing."
+  },
+  {
+    question: "How long until I see results?",
+    answer: "Most clients notice changes in energy and strength within 2 weeks, and visible changes within 4-6 weeks. But this isn't a quick fix — it's about building sustainable habits."
+  },
+  {
+    question: "What equipment do I need?",
+    answer: "It depends on your program, but we can work with anything from just your bodyweight to a full gym setup. We'll design around what you have access to."
+  },
+  {
+    question: "How much time do I need to commit?",
+    answer: "Most training sessions are 30-45 minutes, 3-4 times per week. The rest is about small daily habits that add up to big results."
+  }
+];
+---
+
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>Real Questions from Real Blokes</h2>
+    </div>
+    
+    <div class="faq-container">
+      {faqs.map((faq, index) => (
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls={`faq-answer-${index}`}>
+            {faq.question}
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer" id={`faq-answer-${index}`}>
+            <p>{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // FAQ accordion functionality
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const isExpanded = question.getAttribute('aria-expanded') === 'true';
+      
+      // Close all other FAQs
+      faqQuestions.forEach(q => {
+        if (q !== question) {
+          q.setAttribute('aria-expanded', 'false');
+          q.querySelector('.faq-icon').textContent = '+';
+          const answerId = q.getAttribute('aria-controls');
+          const answer = document.getElementById(answerId);
+          answer.style.maxHeight = '0';
+        }
+      });
+      
+      // Toggle current FAQ
+      question.setAttribute('aria-expanded', !isExpanded);
+      question.querySelector('.faq-icon').textContent = isExpanded ? '+' : '−';
+      
+      const answerId = question.getAttribute('aria-controls');
+      const answer = document.getElementById(answerId);
+      
+      if (!isExpanded) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      } else {
+        answer.style.maxHeight = '0';
+      }
+    });
+  });
+</script>
+
+<style>
+  .faq {
+    background-color: var(--navy);
+  }
+  
+  .faq-container {
+    max-width: 800px;
+    margin: 3rem auto 0;
+  }
+  
+  .faq-item {
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .faq-question {
+    width: 100%;
+    text-align: left;
+    padding: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .faq-question:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .faq-icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 1.5rem;
+  }
+  
+  .faq-answer p {
+    padding-bottom: 1.5rem;
+    margin: 0;
+  }
+  
+  .faq-question[aria-expanded="true"] {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+</style>
